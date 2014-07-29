@@ -1,0 +1,38 @@
+ToDo
+
+jQuery 2.0 does not support IE 6,7 or 8
+
+3 methods for express net list
+	1. button/option and draw line by manual
+	   https://github.com/tbem/jquery.line
+	2. select state machine as template 
+	   http://jsplumbtoolkit.com/demo/statemachine/bom.html
+	   http://jsplumbtoolkit.com/demo/statemachine/jquery.html
+	3. tree view
+	4. Json ?!!?
+
+
+2014-7-24
+1. Auth
+2. pop-up window for Project Menu
+done 3. format question
+done 4. pop-up window for PCD
+done 5. dynamic form generator for PCD
+6. pop-up window for ModuleTie
+7. new tab for firmware accessory and external module
+8. list project should contain: ProjectName, create time, copy button, download image
+9. new project: select repository, select toolset, project name, vendor name
+
+
+2014-7-28
+done 1. convert netlist to tree
+done 2. display tree view of connection list
+
+ToDo
+submit form works
+auth for someone to add private repository
+disable or delete some button if there is not related content for it, for example<PCD>  <Duplicate>
+
+
+
+

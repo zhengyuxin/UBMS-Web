@@ -1,0 +1,48 @@
+<!-- {% import "bootstrap/table_form_wtf.html" as table_form_wtf %} -->
+
+
+	
+	  <form>
+    {{ form.hidden_tag() }}
+    {{ table_form_wtf.form_errors(form, hiddens='only') }}
+    	<table class="table table-hover table-condensed">
+          <thead>
+            <tr>
+              <th width=60>
+              	<button type="button" class="btn btn-default btn-sm">
+    			  <span class="glyphicon glyphicon-list-alt"></span> Index
+    			</button></th>
+              <th>
+              	<div class="input-group input-group-sm merged">
+    			  <span class="input-group-addon" id="firmware-module-name">Question Name</span>
+    	          <input id="hcp-livefilter-input" type="text" class="form-control">
+    			  <span class="input-group-addon" id="firmware-module-name">Filter</span>
+    			</div>
+              </th>
+              <th width=120>
+              	<button type="button" class="btn btn-default btn-sm">
+    			  <span class="glyphicon glyphicon-cog"></span> Settings
+    			</button>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="hcp-livefilter-list">
+          {%- for field in form %}
+          {% if not bootstrap_is_hidden_field(field) -%}
+            <tr>
+              <td class = "firmware-id-td">{{loop.index-1}}</td>
+              {{ table_form_wtf.form_field(field,
+                                           form_type=form_type,
+                                           horizontal_columns=horizontal_columns,
+                                           button_map={}) }}
+              
+              
+            </tr> 
+            {%- endif %}
+          {% endfor %}
+          </tbody>
+          
+        </table>
+</form>
+<script type="text/javascript">$('#hcp-livefilter-list').liveFilter('#hcp-livefilter-input', 'tr', {filterChildSelector: 'td>label'});</script>
+<script type="text/javascript">$("[type='checkbox']").bootstrapSwitch();</script>

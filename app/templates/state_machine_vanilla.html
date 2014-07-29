@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width">
+		<link rel="shortcut icon" type="image/png" href="../../img/favicon.png">
+        <title>jsPlumb 1.6.2 demo - statemachine (Vanilla)</title>
+		
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jsplumb.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/state_machine_demo.css') }}">
+    </head>
+<body data-demo-id="flowchart" data-library="dom">
+        
+        <div id="main">
+            <!-- demo -->
+            <div class="demo statemachine-demo" id="statemachine-demo">
+            
+                <div class="w" id="opened">BEGIN<div class="ep"></div></div>
+                <div class="w" id="phone1">PHONE INTERVIEW 1<div class="ep"></div></div>
+                <div class="w" id="phone2">PHONE INTERVIEW 2<div class="ep"></div></div>
+                <div class="w" id="inperson">IN PERSON<div class="ep"></div></div>
+                <div class="w" id="rejected">REJECTED<div class="ep"></div></div>                           
+            </div>
+            <!-- /demo -->
+        </div>
+        <script src="{{ url_for('static', filename='js/dom.jsPlumb-1.6.2-min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/state_machine_demo.js') }}"></script>
+     </body>
+</html>

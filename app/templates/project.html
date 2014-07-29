@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}UBMS Web{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+   	<ul id="steps-tab" class="nav nav-tabs" role="tablist">
+		 <li class="active" id="QuestionTab"><a href="#Question">Question</a></li>
+		 <li><a href="#Hardware" id="HardwareTab">Hardware</a></li>
+		 <li><a href="#Connector" id="ConnectorTab">Connector</a></li>
+     <li><a href="#Peripheral" id="PeripheralTab">Peripheral</a></li>
+     <li><a href="#Connection" id="ConnectionTab">Connection</a></li>
+		 <!-- <li><a href="#ConnectionTest" id="ConnectionTestTab">ConnectionTest</a></li> -->
+     <li><a href="#Firmware" id="FirmwareTab">Firmware</a></li>
+		 <li><a href="#Customize" id="CustomizeTab">Customize</a></li>
+	</ul>
+	
+	
+          
+	<div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade active in" id="Question"></div>
+      <div class="tab-pane fade" id="Hardware"></div>
+      <div class="tab-pane fade" id="Connector"></div>
+      <div class="tab-pane fade" id="Peripheral"></div>
+      <div class="tab-pane fade" id="Connection"></div>
+      <div class="tab-pane fade" id="ConnectionTest"></div>
+      <div class="tab-pane fade" id="Firmware">
+        <!-- <img src="{{ url_for('static', filename='img/loading_icon.gif') }}"> -->
+      </div>
+      <div class="tab-pane fade" id="Customize">
+
+
+          <ul id="stacked-steps-tab"  class="nav nav-pills nav-stacked" style="max-width: 200px;">
+             <li><a href="#FirmwareAccessoryDiv" id="#FirmwareAccessoryTab">FirmwareAccessory</a></li>
+             <li><a href="#ExternalModuleDiv" id="ExternalModuleTab">ExternalModule</a></li>
+             <li><a href="#UefiDriverDiv" id="UefiDriverTab">UefiDriver</a></li>
+             <li><a href="#UiFilesDiv" id="UiFilesTab">UiFiles</a></li>
+             <li><a href="#PayloadFilesDiv" id="PayloadFilesTab">PayloadFiles</a></li>
+          </ul>
+
+          <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade" id="FirmwareAccessoryDiv">this is for FirmwareAccessoryDiv</div>
+              <div class="tab-pane fade" id="ExternalModuleDiv">this is for ExternalModuleDiv</div>
+              <div class="tab-pane fade" id="UefiDriverDiv">this is for UefiDriverDiv</div>
+              <div class="tab-pane fade" id="UiFilesDiv">this is for UiFilesDiv</div>
+              <div class="tab-pane fade" id="PayLoadFilesDiv">this is for PayLoadFilesDiv</div>
+          </div>
+      </div>
+    </div>
+	
+</div>
+
+        
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="ubms_modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+
+$('#steps-tab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+$('#stacked-steps-tab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+ jQuery(document).ready(function($) {
+   $('#Question').load("{{ url_for('main.question')}}");
+ });
+ $("#HardwareTab").click(function(event){$('#Hardware').load("{{ url_for('main.hardware')}}");}); 
+ $("#QuestionTab").click(function(event){$('#Question').load("{{ url_for('main.question')}}");});
+ $("#ConnectorTab").click(function(event){$('#Connector').load("{{ url_for('main.connector')}}");});
+ $("#ConnectionTab").click(function(event){$('#Connection').load("{{ url_for('main.connection')}}");});
+ $("#ConnectionTestTab").click(function(event){$('#ConnectionTest').load("{{ url_for('main.connectiontest')}}");});
+ $("#PeripheralTab").click(function(event){$('#Peripheral').load("{{ url_for('main.peripheral')}}");});
+ $("#FirmwareTab").click(function(event){$('#Firmware').load("{{ url_for('main.firmware')}}");});
+
+ $(document).on("click", "[data-target=#ubms_modal]", function () {
+     var btn_id = $(this).prop('id');
+     $('#ubms_modal').modal('show');
+     $('#ubms_modal div.modal-body').load("{{url_for('main.pcds', module_path='')}}" + encodeURIComponent(btn_id));
+});
+</script>
+{% endblock%}

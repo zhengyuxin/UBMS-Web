@@ -1,59 +1,63 @@
-{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/wtf.html" as wtf %} {% block page_content %}
 
-{% block page_content %}
-<div class="page-header">
-	
-	
-	<table class="table table-hover table-condensed">
-      <thead>
+<table class="table table-hover table-condensed">
+    <thead>
         <tr>
-          <th>
-          	<button type="button" class="btn btn-default btn-sm">
-			  <span class="glyphicon glyphicon-list-alt"></span> Index
-			</button></th>
-          <th>
-          	<div class="input-group input-group-sm merged">
-			  <span class="input-group-addon" id="firmware-module-name">Module Name</span>
-	          <input id="fimware-livefilter-input" type="text" class="form-control">
-			  <span class="input-group-addon" id="firmware-module-name">Filter</span>
-			</div>
-          </th>
-          <th>
-          	<button type="button" class="btn btn-default btn-sm">
-			  <span class="glyphicon glyphicon-cog"></span> PCD
-			</button>
-          </th>
-          <th>
-          	<button type="button" class="btn btn-default btn-sm">
-			  <span class="glyphicon glyphicon-link"></span> Module Tie
-			</button>
-          </th>
+            <th width=60>
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-list-alt"></span>&nbsp;Index
+                </button>
+            </th>
+            <th>
+                <div class="input-group input-group-sm merged">
+                    <span class="input-group-addon" id="firmware-module-name">Module Name</span>
+                    <input id="fimware-livefilter-input" type="text" class="form-control">
+                    <span class="input-group-addon" id="firmware-module-name">Filter</span>
+                </div>
+            </th>
+            <th width=60>
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-cog"></span>&nbsp;PCD
+                </button>
+            </th>
+            <th width=60>
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-link"></span>&nbsp;Module Tie
+                </button>
+            </th>
         </tr>
-      </thead>
-      <tbody id="fimware-livefilter-list">
-      {% for firmware in firmwares %}
+    </thead>
+    <tbody id="fimware-livefilter-list">
+        {% for firmware in firmwares %}
         <tr>
-          <td class = "firmware-id-td">{{loop.index}}</td>
-          <td><span>{{ firmware[0] }}</span></td>
-          <td>
-          	<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" id="{{ firmware[1] }}">
-	  			<span class="glyphicon glyphicon-cog"></span>&nbsp;PCD
-			</button>
-          </td>
-          {% if firmware in moduleties %}
-          <td> 
-          	<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" id="{{ firmware[1] }}">
-	  			<span class="glyphicon glyphicon-link"></span>&nbsp;Module Tie
-			</button>
-          </td>
-		  {% else %}
-          <td> </td>
-		  {% endif %}          
+            <td class="firmware-id-td">{{loop.index}}</td>
+            <td>
+                <span>{{ firmware[0] }}</span>
+            </td>
+            <td>
+                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ubms_modal" data-target=".bs-example-modal-lg" id="{{ firmware[1] }}">
+                    <span class="glyphicon glyphicon-cog"></span>&nbsp;PCD
+                </button>
+            </td>
+            {% if firmware in moduleties %}
+            <td>
+                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#module_tie_modal" id="{{ firmware[1] }}">
+                    <span class="glyphicon glyphicon-link"></span>&nbsp;Module Tie
+                </button>
+            </td>
+            {% else %}
+            <td></td>
+            {% endif %}
         </tr>
-      {% endfor %}
-      </tbody>
-      
-    </table>
-</div>
-<script>$('#fimware-livefilter-list').liveFilter('#fimware-livefilter-input', 'tr', {filterChildSelector: 'td>span'});</script>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+
+<script>
+$('#fimware-livefilter-list').liveFilter('#fimware-livefilter-input', 'tr', {
+    filterChildSelector: 'td>span'
+});
+</script>
 {% endblock %}

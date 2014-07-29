@@ -1,0 +1,114 @@
+<!-- <div class="container"> -->
+
+{% macro print_tree(tree, deepth) %} 
+    {% for each_key,each_value in tree.iteritems() %} 
+        {% if each_value=='' %}
+            <div class="row net-row show-grid net-line">
+                <div class="col-md-{{10-deepth}} col-md-offset-{{deepth+1}} unconnected-item">
+                    {{each_key[1]}}
+                </div>
+                <div class="col-md-1 col-md-offset-0">
+                    <button type="button" class="btn btn-default btn-xs net-line-button">
+                        <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp;&nbsp;Add&nbsp;&nbsp;&nbsp;&nbsp;
+                    </button>
+                </div>
+            </div>
+        {% else %}
+            <div class="row net-row show-grid net-line">
+                <div class="col-md-{{10-deepth}} col-md-offset-{{deepth+1}} connected-item">
+                    <div class="net-connectionpoint">{{each_key[1]}} -- {{each_key[3]}}</div>
+                    <div class="net-devicename">{{each_value[2]}}</div>
+                </div>
+                <div class="col-md-1 col-md-offset-0">
+                    <div class="btn-group net-line-button" id="{{each_value[1]}}">
+                        <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+                            Remove
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a>
+                            </li>
+                            <li><a href="#">Another action</a>
+                            </li>
+                            <li><a href="#">Something else here</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endif %} 
+        {% if each_value[0]=='Child' %} 
+            {{print_tree(each_value[3], deepth+1)}} 
+        {% endif %} 
+    {% endfor %} 
+{% endmacro %}
+
+<div id="myTabContent" class="tab-content">
+    <div class=" container net-container">
+        <div class="row net-row show-grid net-line" style="margin-top: 8px">
+            <div class="col-md-4 col-md-offset-0">
+                <div class="input-group input-group-sm merged net-head">
+                    <span class="input-group-addon" id="firmware-module-name">Connection Point</span>
+                    <input id="fimware-livefilter-input" type="text" class="form-control">
+                    <span class="input-group-addon" id="firmware-module-name">Filter</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-offset-0">
+                <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-resize-full"></span>
+                    CollapseAll
+                </button>
+                <button type="button" class="btn btn-default btn-sm" id="hide_show_unconnected">
+                <span class="glyphicon glyphicon-eye-close" ></span>
+                    HideUnconnected
+                </button>
+            </div>
+            
+            <div class="col-md-4 col-md-offset-0">
+                <div class="input-group input-group-sm merged net-head">
+                    <span class="input-group-addon" id="firmware-module-name">Device Name</span>
+                    <input id="fimware-livefilter-input" type="text" class="form-control">
+                    <span class="input-group-addon" id="firmware-module-name">Filter</span>
+                </div>
+            </div>
+            <div class="col-md-1 col-md-offset-0">
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-cog"></span>&nbsp;Modify
+                </button>
+            </div>
+        </div>
+        <div class="row net-row show-grid net-line">
+
+                <div class="col-md-11 col-md-offset-0 connected-item" id="{{net_root[0]}}">
+                    <div class="net-connectionpoint"></div>
+                    <div class="net-devicename">{{net_root[1]}}</div>
+                </div>
+                <div class="col-md-1 col-md-offset-0">
+                    
+                </div>
+        </div>
+        {% for root, tree in net_tree.iteritems() %} {{print_tree(tree, deepth=0) }} {% endfor %}
+    </div>
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $('#hide_show_unconnected').click(function(event) {
+        /* Act on the event */
+         $('.unconnected-item').parent("div.net-line").hide('fast', function() {});
+        $(this).children('span').class('glyphicon glyphicon-eye-open');
+        $(this).text('ShowUnconnected');
+    });
+
+
+    // $('#hide_show_unconnected').click(function(event) {
+    //     /* Act on the event */
+    //     $('.unconnected-item').parent("div.net-line").toggle(fast);
+    //     $(this).children('span').toggleClass('glyphicon glyphicon-eye-open');
+    //     $(this).text('ShowUnconnected')
+    // });
+});
+</script>

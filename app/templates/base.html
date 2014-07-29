@@ -10,8 +10,15 @@
 
 {% block styles %}
 {{ super() }}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ubms.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap-switch.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap-switch.min.css') }}">
+  <!-- for jsplumb -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/demo.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jsplumb.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.css') }}">
+
+
 {% endblock%}
 
 {% block navbar %}
@@ -63,8 +70,13 @@
 {% block scripts %}
 {{ super() }}
 {{ moment.include_moment() }}
-{# http://www.bootstrap-switch.org/documentation-3.html #}
+<!--  jQuery 2.x does not support IE<9. -->
+<!-- <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script> -->
+<script src="{{ url_for('static', filename='js/jquery.min.1.9.0.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/moment-with-langs.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/bootstrap-switch.js') }}"></script>
 <script src="{{ url_for('static', filename='js/jquery.liveFilter.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.jsPlumb-1.6.2-min.js') }}"></script>
 <script>$("[type='checkbox']").bootstrapSwitch();</script>
 {% endblock %}
