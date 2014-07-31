@@ -1,82 +1,80 @@
-{% extends "bootstrap/base.html" %}
-
-{% block title %}UBMS Web{% endblock %}
-
-{% block head %}
-{{ super() }}
-	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-	<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-{% endblock %}
-
-{% block styles %}
-{{ super() }}
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ubms.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap-switch.min.css') }}">
-  <!-- for jsplumb -->
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/demo.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jsplumb.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.css') }}">
-
-
-{% endblock%}
-
-{% block navbar %}
+{% extends "bootstrap/base.html" %} {% block title %}UBMS Web{% endblock %} {% block head %} {{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">{% endblock %} {% block styles %} {{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ubms.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap-switch.min.css') }}">{% endblock%} {% block navbar %}
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
+    <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="{{ url_for('main.index')}}">UBMS Web</a>
+            <a class="navbar-brand" href="{{ url_for('main.index')}}">UBMS Web</a>
         </div>
         <div class="navbar-collapse collapse">
-       	 <ul class="nav navbar-nav">
-			 <li class="dropdown">
-			 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <span class="caret"></span></a>
-				 <ul class="dropdown-menu" role="menu">
-					 <li><a href="#">Open Project</a></li>
-					 <li><a href="#">New Project</a></li>
-					 <li><a href="#">Close Project</a></li>
-					 <li class="divider"></li>
-					 <li><a href="#">Recent Project</a></li>
-				 </ul>
-			   </li>
-		 </ul>
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </div>
-{% endblock %}
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Open Project</a>
+                        </li>
+                        <li><a href="#">New Project</a>
+                        </li>
+                        <li><a href="#">Close Project</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#">Recent Project</a>
+                        </li>
+                    </ul>
+                </li>
 
-{% block content %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Manual</a>
+                        </li>
+                        <li><a href="#">Download PC Version</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#">About</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right" role="form">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</div>
+{% endblock %} {% block content %}
 <div class="container">
     {% for message in get_flashed_messages() %}
     <div class="alert alert-warning">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         {{ message }}
     </div>
-    {% endfor %}
-
-    {% block page_content %}{% endblock %}
+    {% endfor %} {% block page_content %}{% endblock %}
 </div>
-{% endblock %}
+{% endblock %} {% block scripts %} {{ super() }}
+<!-- no need for the moment -->
+<!-- {{ moment.include_moment() }} -->
 
-{% block scripts %}
-{{ super() }}
-{{ moment.include_moment() }}
 <!--  jQuery 2.x does not support IE<9. -->
-<!-- <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script> -->
-<script src="{{ url_for('static', filename='js/jquery.min.1.9.0.js') }}"></script>
-<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/moment-with-langs.min.js') }}"></script>
+<!-- bootstrap.min.js need jQuery 2.x, oooooooooops~~ -->
+<!-- <script src="{{ url_for('static', filename='js/jquery.min.1.9.0.js') }}"></script> -->
+
+<!-- local bootstrap.min.js will disable dropdown button -->
+<!-- <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script> -->
+<!-- <script src="{{ url_for('static', filename='js/moment-with-langs.min.js') }}"></script> -->
 <script src="{{ url_for('static', filename='js/bootstrap-switch.js') }}"></script>
 <script src="{{ url_for('static', filename='js/jquery.liveFilter.js') }}"></script>
-<script src="{{ url_for('static', filename='js/jquery.jsPlumb-1.6.2-min.js') }}"></script>
-<script>$("[type='checkbox']").bootstrapSwitch();</script>
+<script>
+$("[type='checkbox']").bootstrapSwitch();
+</script>
 {% endblock %}
