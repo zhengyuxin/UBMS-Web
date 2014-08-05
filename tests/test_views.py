@@ -54,8 +54,20 @@ class TestViewsFunction(unittest.TestCase):
 						 ('BomModuleInf_19', 'GIGE', 'BomModuleInf_1', 'BOARD'): ['Leaf', 'HardwarePkg_F9D480FC-75A5-4ac3-B0A4-9D16B61C5263_0.10\\Connectors\\Network\\NetworkRj45\\NetworkRj45.inf|BomModuleInf_1', u'Network RJ45'], \
 						 ('BomModuleInf_19', 'SD0', 'BomModuleInf_5', 'BOARD'): ['Leaf', 'HardwarePkg_F9D480FC-75A5-4ac3-B0A4-9D16B61C5263_0.10\\Connectors\\Sd\\MicroSdSocket\\MicroSdSocket.inf|BomModuleInf_5', u'uSD Socket']})
 	
-	
-		
+	# TODO: test netlist_2_tree
+	def test_netlist_2_tree_1(self):
+		# test connections in random order
+		pass
+
+	# TODO: test netlist_2_tree
+	def test_netlist_2_tree_2(self):
+		# test netlist_2_tree when child node is absent
+		pass
+
+	# TODO: test netlist_2_tree
+	def test_netlist_2_tree_3(self):
+		# test netlist_2_tree when leaf node is absent
+		pass
 
 if __name__ == '__main__':
     unittest.main()

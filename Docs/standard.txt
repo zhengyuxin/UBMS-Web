@@ -1,1 +1,8 @@
-Intel-Color: #0071c5
+Intel-Color{
+	#0071c5
+}
+
+pip-install-by-proxy
+{
+	pip install --proxy proxy-shz.intel.com:911 Sphinx
+}
