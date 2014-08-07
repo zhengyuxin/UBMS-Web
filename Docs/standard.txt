@@ -4,5 +4,5 @@ Intel-Color{
 
 pip-install-by-proxy
 {
-	pip install --proxy proxy-shz.intel.com:911 Sphinx
+	pip install --proxy http://proxy-shz.intel.com:911 Sphinx
 }

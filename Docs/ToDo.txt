@@ -33,6 +33,15 @@ submit form works
 auth for someone to add private repository
 disable or delete some button if there is not related content for it, for example<PCD>  <Duplicate>
 
+2014-8-7
+1. ProcessPool
+2. No of Process in the Proces Pool: Initial value, Max value, Min remaining process, Max idle process
+3. specify certain to receive the input
+4. Pre-load repository to each process to accelerate opening project
+5. create (Initial value) processes and put them into process pool
+6. create new process automaticaly and put them into process pool when the idle process is less than Min remaining process
+7. kill some idle process when the number of them is larger than Max idle process
+8. 
 
 
 
