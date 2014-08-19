@@ -41,7 +41,7 @@ disable or delete some button if there is not related content for it, for exampl
 5. create (Initial value) processes and put them into process pool
 6. create new process automaticaly and put them into process pool when the idle process is less than Min remaining process
 7. kill some idle process when the number of them is larger than Max idle process
-8. 
 
-
-
+2014-8-18
+1. blue for hardware,  orange for connector, green for peripheral
+2. 

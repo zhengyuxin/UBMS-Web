@@ -327,7 +327,8 @@ def connection():
         fill_net_tree(root, tree, connected_bom_dict)
         net_root =[root, connected_bom_dict.get(root)[0]]
         
-    return render_template('connection.html', net_tree=net_tree, net_root=net_root)
+    return render_template('connection-colorful.html', net_tree=net_tree, net_root=net_root)
+    # return render_template('connection.html', net_tree=net_tree, net_root=net_root)
 
 @main.route('/project/firmware', methods=['GET', 'POST'])
 def firmware():

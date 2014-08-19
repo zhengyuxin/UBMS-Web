@@ -64,6 +64,49 @@
         background-color: #3276b1;
         border-color: #285e8e;
     }
+    .connected-hardware {
+        border-width: 1px;
+        border-radius: 4px 4px 4px 4px;
+        margin-top: 5px;
+        border: 1px solid #000;
+        background-color: #0071c5;
+        color: #fff;
+        background-color: #428bca;
+        border-color: #357ebd;
+    }
+    .connected-hardware:hover{
+        color: #fff;
+        background-color: #3276b1;
+        border-color: #285e8e;
+    }
+    .connected-connector {
+        border-width: 1px;
+        border-radius: 4px 4px 4px 4px;
+        margin-top: 5px;
+        border: 1px solid #000;
+        color: #fff;
+        background-color: #f0ad4e;
+        border-color: #eea236;
+    }
+    .connected-connector:hover{
+        color: #fff;
+        background-color: #ec971f;
+        border-color: #d58512;
+    }
+    .connected-peripheral {
+        border-width: 1px;
+        border-radius: 4px 4px 4px 4px;
+        margin-top: 5px;
+        border: 1px solid #000;
+        color: #fff;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+    }
+    .connected-peripheral:hover{
+        color: #fff;
+        background-color: #449d44;
+        border-color: #398439;
+    }
     .device name {
         border-width: 1px;
         border-radius: 4px 4px 4px 4px;
