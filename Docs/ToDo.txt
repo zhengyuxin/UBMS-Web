@@ -43,5 +43,16 @@ disable or delete some button if there is not related content for it, for exampl
 7. kill some idle process when the number of them is larger than Max idle process
 
 2014-8-18
-1. blue for hardware,  orange for connector, green for peripheral
-2. 
+done 1. blue for hardware,  orange for connector, green for peripheral
+
+2014-8-19
+1. MongoDB for project related files, includes bim, history folder, output folder and report folder
+2. MySQL for auth 
+3. Use Celery as distributed message queue server, RabbitMQ as message queue brokder
+
+2014-8-21
+1. verify performance of celery+RabbitMQ on i7-cpu + 16GB - Memory
+2. verify distributed workers
+3. record every task executed by worker, include time cost, api, parameter, server name, worker id, result into DataBase
+										 include username, projectname
+4. flask-admin
