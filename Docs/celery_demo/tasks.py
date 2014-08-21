@@ -3,10 +3,11 @@ import sys
 import time
 
 from celery import Celery
-
-sys.path.append(r'C:\Users\yzhen22\workspace\OC\Tools\SdbTools')
-from Config.PlatformPdo2 import PlatformPdo2
+SDBTOOLS_PATH = r'C:\Users\yzhen22\workspace\OC\Tools\SdbTools'
 BIM_PATH = r'C:\Users\yzhen22\Intel\Unified Binary Management Suite\Test\Test.bim'
+
+sys.path.append(SDBTOOLS_PATH)
+from Config.PlatformPdo2 import PlatformPdo2
 
 app = Celery('tasks', broker='amqp://guest@localhost//')
 app.config_from_object('celeryconfig')

@@ -6,3 +6,6 @@ pip-install-by-proxy
 {
 	pip install --proxy http://proxy-shz.intel.com:911 Sphinx
 }
+
+git@10.239.68.245:/home/git/UBMS/UBMS-Web.git 
+password: intel@123

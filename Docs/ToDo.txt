@@ -56,3 +56,21 @@ done 1. blue for hardware,  orange for connector, green for peripheral
 3. record every task executed by worker, include time cost, api, parameter, server name, worker id, result into DataBase
 										 include username, projectname
 4. flask-admin
+5. tool for detecting host machine/server to find the ideal max-concurrency number
+	max-concurrency should be the multiple of physical core number n
+	ideal value should be the last one with the same open project time as time of n-concurrency
+	iedal open project time should not larger than 3sec
+	detecting should be stopped when the open project time is larger than 10 sec
+
+	report should include:
+	concurrency  | Memory(size - %) | preload time (min,max)| preload time average | open time (min,max) | open time average 
+
+	related concept:
+	physical processor packages, processor cores, logical processors
+
+6. worker status show
+7. method for getting customer ip 
+	if not request.headers.getlist("X-Forwarded-For"):
+	   ip = request.remote_addr
+	else:
+	   ip = request.headers.getlist("X-Forwarded-For")[0]
