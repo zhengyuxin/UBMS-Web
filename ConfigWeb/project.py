@@ -3,12 +3,12 @@ import sys
 import time
 
 from celery import Celery
-from Config.PlatformPdo2 import PlatformPdo2
-
+from ConfigWeb.celery import app
 sys.path.append(r'C:\Users\yzhen22\workspace\OC\Tools\SdbTools')
 from Config.PlatformPdo2 import PlatformPdo2
 
 _platformpdo2_obj = None
+_repository = None
 
 @app.task
 def preload_repository(bim_path):
@@ -22,7 +22,7 @@ def preload_repository(bim_path):
 			return 'PID:%s, fail to pre-open project %s, time:%s' % (os.getpid(), bim_path, time.time()-start_time)
 
 	else:
-		pass
+		return 'PID:%s, there is opened project, time:%s' % (os.getpid(), bim_path, time.time()-start_time)
 
 @app.task
 def open(bim_path):
@@ -33,6 +33,4 @@ def open(bim_path):
 	else:
 		return 'PID:%s, fail to open project %s, time:%s' % (os.getpid(), bim_path, time.time()-start_time)
 
-
-@app.task
-def get()
+def get():

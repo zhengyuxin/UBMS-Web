@@ -1,16 +1,16 @@
 from kombu import Queue
 
+CELERY_IMPORTS = ("ConfigWeb.project", 'ConfigWeb.tasks')
+
 BROKER_URL = 'amqp://guest@localhost//'
 CELERY_RESULT_BACKEND = 'amqp'
-
-CELERY_IMPORTS = ("tasks", "project")
 
 # CELERY_TASK_SERIALIZER = 'json'
 # CELERY_RESULT_SERIALIZER = 'json'
 # CELERY_ACCEPT_CONTENT=['json']
 CELERY_TIMEZONE = 'Europe/Oslo'
 CELERY_ENABLE_UTC = True
-CELERYD_CONCURRENCY = 3
+CELERYD_CONCURRENCY = 1
 
 
 CELERY_DEFAULT_QUEUE = 'default'
@@ -29,10 +29,3 @@ CELERY_DEFAULT_ROUTING_KEY = 'task.default'
 # IMPORTANT the wildcard characters: 
 # * (matches a single word), and # (matches zero or more words).
 CELERY_WORKER_DIRECT = True
-
-CELERY_ROUTES = {
-        'Config.project.#': {
-            'queue': 'project_1',
-            'routing_key': 'project_1.Open',
-        }
-}

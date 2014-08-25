@@ -2,7 +2,7 @@ BROKER_URL = 'amqp://guest@localhost//'
 # CELERY_RESULT_BACKEND = 'db+sqlite:///results.sqlite'
 CELERY_RESULT_BACKEND = 'amqp'
 
-CELERY_IMPORTS = ("tasks", )
+CELERY_IMPORTS = ("tasks", 'test')
 
 # CELERY_TASK_SERIALIZER = 'json'
 # CELERY_RESULT_SERIALIZER = 'json'
@@ -10,3 +10,5 @@ CELERY_IMPORTS = ("tasks", )
 CELERY_TIMEZONE = 'Europe/Oslo'
 CELERY_ENABLE_UTC = True
 # CELERYD_CONCURRENCY = 4
+
+# CELERY_WORKER_DIRECT = True
