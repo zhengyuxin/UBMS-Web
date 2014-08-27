@@ -18,7 +18,7 @@ class Config:
     FLASKY_MAIL_SENDER = 'Flasky Admin <flasky@example.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
 
-    BIM_PATH = r'C:\Users\yzhen22\Intel\Unified Binary Management Suite\Test\Test.bim'
+    BIM_PATH = r'C:\Users\Public\Intel\Unified Binary Management Suite\1.0\crb\Minnow\Minnow.bim'
     @staticmethod
     def init_app(app):
         pass
